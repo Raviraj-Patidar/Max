@@ -4,10 +4,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Max | App Developer</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Max</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <style>
-    /* Reset and base setup */
     * {
       margin: 0;
       padding: 0;
@@ -17,13 +19,9 @@
     body {
       font-family: 'Poppins', sans-serif;
       background-color: #e0f7fa;
-      /* App-like light cyan background */
       color: #004d40;
-      /* Dark teal text */
-      line-height: 1.6;
     }
     
-    /* Container */
     .container {
       width: 90%;
       max-width: 1000px;
@@ -31,34 +29,23 @@
       padding: 2rem 0;
     }
     
-    /* Hero section */
     .hero {
       background-color: #00796b;
-      /* App teal color */
       color: white;
       text-align: center;
       padding: 4rem 1rem;
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
     }
     
     .hero h1 {
-      font-size: 3rem;
+      font-size: 2.8rem;
       margin-bottom: 0.5rem;
     }
     
     .hero p {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       opacity: 0.95;
-    }
-    
-    /* Section styles */
-    .about,
-    .projects,
-    .donation {
-      background: white;
-      margin-top: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-      padding: 2rem;
     }
     
     h2 {
@@ -66,28 +53,36 @@
       margin-bottom: 1rem;
     }
     
-    /* Project Cards */
+    .project-list {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
     .project-card {
-      background-color: #ffffff;
-      padding: 1rem 1.5rem;
-      margin-bottom: 1.2rem;
-      border-radius: 10px;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+      background: #ffffff;
+      padding: 1.5rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-4px);
     }
     
     .project-card h3 {
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.3rem;
       color: #00796b;
     }
     
     .project-card p {
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
     }
     
-    /* Buttons */
     .btn {
       display: inline-block;
-      margin-top: 0.5rem;
       padding: 0.5rem 1rem;
       background-color: #00796b;
       color: white;
@@ -95,95 +90,142 @@
       text-decoration: none;
       font-weight: bold;
       transition: background 0.3s ease;
+      cursor: pointer;
     }
     
     .btn:hover {
       background-color: #004d40;
     }
     
-    .btn.disabled {
-      background-color: gray;
-      pointer-events: none;
-      cursor: not-allowed;
+    .dropdown {
+      margin-top: 0.8rem;
+      display: none;
+      background-color: #f1f1f1;
+      padding: 1rem;
+      border-radius: 10px;
     }
     
-    /* Footer */
+    .dropdown a {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    
+    .donate-box {
+      background: #fff3e0;
+      padding: 1rem;
+      border-radius: 10px;
+      margin-top: 2rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    
+    .bug-report-form {
+      background: white;
+      padding: 1rem;
+      border-radius: 10px;
+      margin-top: 1rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+    
     footer {
       text-align: center;
       padding: 2rem 1rem;
-      margin-top: 2rem;
-      background-color: #b2dfdb;
+      font-size: 0.9rem;
     }
     
-    footer a {
-      color: #00796b;
-      text-decoration: none;
-      font-weight: 500;
+    .about {
+      margin-top: 2rem;
+      background-color: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
   </style>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  
   <header class="hero">
     <div class="container">
-      <h1>I'm Max</h1>
-      <p>I build free and useful Android applications</p>
+      <h1>Hello, I'm Max</h1>
+      <p>I create free and useful Android apps for everyday needs</p>
     </div>
   </header>
   
-  <section class="about">
-    <div class="container">
+  <main class="container">
+    
+    <div class="about">
       <h2>About Me</h2>
-      <p>
-        I'm a self-taught developer passionate about making Android apps that help people in their daily lives. All my apps are free and complete safe to use.
-      </p>
+      <p>I'm Raviraj Patidar (aka Max), a passionate self-taught Android developer from Alote. I build practical, simple, and free apps to solve everyday problems.</p>
     </div>
-  </section>
-  
-  <section class="projects">
-    <div class="container">
-      <h2>My Applications</h2>
+    
+    <h2 style="margin-top: 2rem;">My Applications</h2>
+    <div class="project-list">
       
       <div class="project-card">
         <h3>Date&Month Calculator</h3>
-        <p>Calculate difference between two dates in years, months, and days.</p>
-        <a href="#" class="btn">Download APK</a>
+        <p>Calculate date difference in years, months, and days.</p>
+        <button class="btn" onclick="toggleDropdown(this)">Download</button>
+        <div class="dropdown">
+          <a href="#" class="btn">Latest Version</a>
+          <a href="#" class="btn" style="background-color: #ccc; color: #00796b;">Old Version</a>
+        </div>
       </div>
+      
       <div class="project-card">
-        <h3> Intrest Calculator</h3>
-        <p>Calculate intrest in months, and days.</p>
-        <a href="#" class="btn">Download APK</a>
+        <h3>PDF Locker & Unlocker</h3>
+        <p>Lock your PDF with a password or remove the password from it. Simple, secure, and offline.</p>
+        <button class="btn" onclick="toggleDropdown(this)">Download</button>
+        <div class="dropdown">
+          <a href="#" class="btn">Latest Version</a>
+          <a href="#" class="btn" style="background-color: #ccc; color: #00796b;">Old Version</a>
+        </div>
       </div>
+      
       <div class="project-card">
-        <h3>Date&Month Calculator</h3>
-        <p>Calculate difference between two dates in years, months, and days.</p>
-        <a href="#" class="btn">Download APK</a>
+        <h3>Image2PDF & Compressor</h3>
+        <p>Convert images to PDF and reduce file size. Easy to use and perfect for sharing documents.</p>
+        <button class="btn" onclick="toggleDropdown(this)">Download</button>
+        <div class="dropdown">
+          <a href="#" class="btn">Latest Version</a>
+          <a href="#" class="btn" style="background-color: #ccc; color: #00796b;">Old Version</a>
+        </div>
       </div>
+      
       <div class="project-card">
-        <h3>Date&Month Calculator</h3>
-        <p>Calculate difference between two dates in years, months, and days.</p>
-        <a href="#" class="btn">Download APK</a>
+        <h3>Interest Calculator</h3>
+        <p>Calculate interest based on custom months and days.</p>
+        <button class="btn" onclick="toggleDropdown(this)">Download</button>
+        <div class="dropdown">
+          <a href="#" class="btn">Latest Version</a>
+          <a href="#" class="btn" style="background-color: #ccc; color: #00796b;">Old Version</a>
+        </div>
       </div>
       
       <div class="project-card">
         <h3>Coming Soon</h3>
         <p>More useful tools are under development.</p>
-        <a href="#" class="btn disabled">Not Available</a>
+        <span class="btn" style="opacity:0.5; pointer-events:none;">Not Available</span>
       </div>
+      
     </div>
-  </section>
-  
-  <section class="donation">
-    <div class="container">
+    
+    <div class="donate-box">
       <h2>Support My Work</h2>
-      <p>
-        I create all these apps for free. If you find them useful, you can support me with a small donation.
-      </p>
+      <p>If you find my apps helpful, support me by donating.</p>
       <a href="#" class="btn">Donate Now</a>
     </div>
-  </section>
+    
+    <h2 style="margin-top: 2rem;">Report a Bug</h2>
+    <div class="bug-report-form">
+      <form action="mailto:yourmail@example.com" method="post" enctype="text/plain">
+        <label>App Name:<br><input type="text" name="appName" required></label><br><br>
+        <label>Version:<br><input type="text" name="version"></label><br><br>
+        <label>Screenshot URL:<br><input type="text" name="screenshot"></label><br><br>
+        <label>Description:<br><textarea name="description" rows="4" required></textarea></label><br><br>
+        <button class="btn" type="submit">Submit</button>
+      </form>
+    </div>
+  </main>
   
   <footer>
     <div class="container">
@@ -192,6 +234,29 @@
     </div>
   </footer>
   
+  <script>
+    gsap.from(".hero h1", { duration: 1, y: -50, opacity: 0 });
+    gsap.from(".hero p", { duration: 1, y: 50, opacity: 0, delay: 0.3 });
+    gsap.utils.toArray(".project-card").forEach((card, i) => {
+      gsap.from(card, {
+        scrollTrigger: card,
+        duration: 1,
+        y: 30,
+        opacity: 0,
+        delay: i * 0.1
+      });
+    });
+    
+    function toggleDropdown(button) {
+      const allDropdowns = document.querySelectorAll('.dropdown');
+      allDropdowns.forEach(d => {
+        if (d !== button.nextElementSibling) d.style.display = 'none';
+      });
+      
+      const dropdown = button.nextElementSibling;
+      dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
 </body>
 
 </html>
